@@ -1,0 +1,175 @@
+---
+ <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login/Cadastrar - CodeConnect</title>
+<style>
+    body {
+        background: linear-gradient(to right, #1E1E1E, #111111); /* Degradê de cinza escuro para preto */
+        font-family: Consolas, monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .form-container {
+        background-color: #2E2E2E; /* Cinza escuro */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 600px; /* Define uma largura máxima */
+        text-align: left;
+    }
+
+    .form-container h2 {
+        margin-bottom: 20px;
+        color: #55CC55; /* Verde */
+    }
+
+    .form-container p {
+        color: #D4D4D4; /* Cinza claro */
+        margin-bottom: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #D4D4D4; /* Cinza claro */
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #3E3E3E; /* Cinza mais escuro */
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: #111111; /* Preto */
+        color: #D4D4D4; /* Cinza claro */
+    }
+
+    .form-group input[type="submit"] {
+        background-color: #55CC55; /* Verde */
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .form-group input[type="submit"]:hover {
+        background-color: #3FB03F; /* Verde mais escuro */
+    }
+
+    .code-editor {
+        background-color: #111111; /* Preto */
+        color: #D4D4D4; /* Cinza claro */
+        border: 1px solid #3E3E3E; /* Cinza mais escuro */
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 14px;
+        line-height: 1.5;
+        height: 300px;
+        overflow-y: auto;
+    }
+
+    .code-editor:focus {
+        outline: none;
+    }
+</style>
+</head>
+<body>
+
+<!-- Tela de Login -->
+<div class="form-container" id="login">
+    <h2>Login - Code Sapphire</h2>
+    <form>
+        <div class="form-group">
+            <label for="usuario">Usuário ou Email:</label>
+            <input type="text" id="usuario" name="usuario" required>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+        </div>
+        <button type="submit" id="entrar-btn">Entrar</button>
+    </form>
+    <p>Ainda não tem uma conta? <a href="#" id="cadastrar-link">Cadastrar-se</a></p>
+</div>
+
+<!-- Tela de Cadastro -->
+<div class="form-container" id="cadastro" style="display: none;">
+    <h2>Cadastrar - Code Sapphire</h2>
+    <form>
+        <div class="form-group">
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="senha-cadastro">Senha:</label>
+            <input type="password" id="senha-cadastro" name="senha-cadastro" required>
+        </div>
+        <div class="form-group">
+            <label for="confirmar_senha">Confirmar Senha:</label>
+            <input type="password" id="confirmar_senha" name="confirmar_senha" required>
+        </div>
+        <button type="submit" id="cadastrar-btn">Cadastrar</button>
+    </form>
+    <p>Já tem uma conta? <a href="#" id="login-link">Login</a></p>
+</div>
+
+<!-- Tela de Boas-vindas - Crie seu código -->
+<div class="form-container" id="crie-seu-codigo" style="display: none;">
+    <h2>Bem-vindo ao Code Sapphire!</h2>
+    <p>Seja bem vindo</p>
+    <p>Crie seu código:</p>
+    <div class="code-editor" contenteditable="true" spellcheck="false">
+        <!-- Seu código aqui... -->
+    </div>
+</div>
+
+<script>
+    // Função para exibir a tela de cadastro
+    document.getElementById('cadastrar-link').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('cadastro').style.display = 'block';
+        document.getElementById('crie-seu-codigo').style.display = 'none';
+    });
+
+    // Função para exibir a tela de login
+    document.getElementById('login-link').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('cadastro').style.display = 'none';
+        document.getElementById('login').style.display = 'block';
+        document.getElementById('crie-seu-codigo').style.display = 'none';
+    });
+
+    // Função para exibir a tela de criação de código após o cadastro
+    document.querySelector('#cadastro form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        document.getElementById('cadastro').style.display = 'none';
+        document.getElementById('crie-seu-codigo').style.display = 'block';
+    });
+
+    // Função para exibir a tela de criação de código após o login
+    document.querySelector('#login form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('crie-seu-codigo').style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
+```
